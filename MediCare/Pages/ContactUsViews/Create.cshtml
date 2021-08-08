@@ -1,0 +1,43 @@
+﻿@page
+@model MediCare.Pages.ContactUsViews.CreateModel
+
+@{
+    ViewData["Title"] = "ContactUs";
+}
+<h4>Contact Us</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ContactUs.Name" class="control-label"></label>
+                <input asp-for="ContactUs.Name" class="form-control" />
+                <span asp-validation-for="ContactUs.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUs.Email" class="control-label"></label>
+                <input asp-for="ContactUs.Email" class="form-control" />
+                <span asp-validation-for="ContactUs.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactUs.Contact" class="control-label"></label>
+                <input asp-for="ContactUs.Contact" class="form-control" />
+                <span asp-validation-for="ContactUs.Contact" class="text-danger"></span>
+            </div>          
+            <div class="form-group">
+                <label asp-for="ContactUs.Message" class="control-label"></label>
+                <input asp-for="ContactUs.Message" class="form-control" />
+                <span asp-validation-for="ContactUs.Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-info">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

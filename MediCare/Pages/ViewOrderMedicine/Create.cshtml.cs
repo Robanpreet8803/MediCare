@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using MediCare.Data;
+using MediCare.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace MediCare.Pages.OrderViewMedicine
+{
+    public class CreateModel : PageModel
+    {
+        private readonly MediCare.Data.MediCareContext _context;
+
+        public CreateModel(MediCare.Data.MediCareContext context)
+        {            
+            _context = context;
+        }
+
+        public IEnumerable<Medicine> medicines { get; set; }
+        public async Task OnGet()
+        {
+            medicines = await _context.Medicine.ToListAsync();
+        }
+
+        [BindProperty]
+        public OrderMedicine OrderMedicine { get; set; }
+
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://aka.ms/RazorPagesCRUD.
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            _context.OrderMedicine.Add(OrderMedicine);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
+        }
+    }
+}

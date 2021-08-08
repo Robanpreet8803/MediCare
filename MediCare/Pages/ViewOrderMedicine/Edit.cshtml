@@ -1,0 +1,46 @@
+﻿@page
+@model MediCare.Pages.OrderViewMedicine.EditModel
+
+@{
+    ViewData["Title"] = "Edit Order of Medicine";
+}
+
+<h4>Edit Order of Medicine</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OrderMedicine.id" />
+            <div class="form-group">
+                <label asp-for="OrderMedicine.Name" class="control-label"></label>
+                <input asp-for="OrderMedicine.Name" class="form-control" />
+                <span asp-validation-for="OrderMedicine.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderMedicine.Contact" class="control-label"></label>
+                <input asp-for="OrderMedicine.Contact" class="form-control" />
+                <span asp-validation-for="OrderMedicine.Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderMedicine.MedicineId" class="control-label"></label>
+                <select asp-for="OrderMedicine.MedicineId" class="form-control" asp-items="@(new SelectList(Model.medicines, "Id","MedicineName"))">
+                    <option value="" selected disabled>--Select Medicine--</option>
+                </select>
+                <span asp-validation-for="OrderMedicine.MedicineId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderMedicine.Strips" class="control-label"></label>
+                <input asp-for="OrderMedicine.Strips" class="form-control" />
+                <span asp-validation-for="OrderMedicine.Strips" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn btn-info">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

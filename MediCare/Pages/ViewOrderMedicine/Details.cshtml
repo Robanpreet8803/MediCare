@@ -1,0 +1,47 @@
+﻿@page
+@model MediCare.Pages.OrderViewMedicine.DetailsModel
+
+@{
+    ViewData["Title"] = "Detail of Order Medicine";
+}
+
+<div>
+    <h4>Detail of Order Medicine</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderMedicine.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderMedicine.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderMedicine.Contact)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderMedicine.Contact)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderMedicine.MedicineId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderMedicine.MedicineId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderMedicine.Strips)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderMedicine.Strips)
+        </dd>
+                <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderMedicine.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderMedicine.Address)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" class="btn btn-info" asp-route-id="@Model.OrderMedicine.id">Edit</a>
+    <a asp-page="./Index" class="btn btn-info">Back</a>
+</div>
